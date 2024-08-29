@@ -1,5 +1,6 @@
 const containerGrid = document.querySelector('.container');
-const eraser = document.querySelector('#eraser')
+const eraser = document.querySelector('#eraser');
+const sketchBtn = document.querySelector('#sketchBtn')
 
 
 
@@ -23,12 +24,26 @@ function createGrid(sides) {
             subgrid2.classList.add('innerGrid')
             subgrid.appendChild(subgrid2)
            
+
             
             subgrid2.addEventListener('mouseover',()=> {
                 subgrid2.classList.add('colored')
                 
+                
+                
             })
             
+            function sketch(){
+                
+                subgrid2.addEventListener('mouseover', ()=>{
+                    subgrid2.classList.add('colored')
+                })
+            }
+
+            sketchBtn.addEventListener('click', ()=> {
+                sketch();
+            })
+
             function eraseSketch() {
                 
             subgrid2.addEventListener('mouseover',()=> {
