@@ -2,14 +2,13 @@ const containerGrid = document.querySelector('.container');
 const eraser = document.querySelector('#eraser');
 const sketchBtn = document.querySelector('#sketchBtn');
 const colorBtn = document.querySelector('#multicolorBtn');
-const gridSize = document.querySelector('#gridSize');
+
+const gridSizeBtn = document.querySelector('#gridSize')
 
 
 
 
-function getGridSize(){
-    let sides = prompt('What is your grid size? ')
-}
+
 
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
@@ -23,16 +22,12 @@ function getRandomColor() {
 
 
 
- 
-
-
 
 
 
 
 function createGrid(sides) {
     
-
     for (let y = 0; y < sides ; y++){
         const subgrid = document.createElement('div');
         subgrid.setAttribute('style', 'border: transparent; flex : 1; display : flex')
@@ -96,6 +91,20 @@ function createGrid(sides) {
                         
                     })
                 })
+
+                function removeGrid(){            
+                        subgrid.remove();
+                        subgrid2.remove();
+                
+                }
+
+               
+                
+                gridSizeBtn.addEventListener('click', ()=>{
+                    removeGrid();
+                    
+                })
+                
             
             
         }
@@ -105,11 +114,15 @@ function createGrid(sides) {
         
         
     }
+    createGrid(16);
 
-    
-    
-    createGrid(10);
-    
-    
 
+   gridSizeBtn.addEventListener('click', ()=>{
+    console.log('click');
+    let sides = Number(prompt('What size? '));
+    createGrid(sides);
+   }) 
+    
+    
+    
 
