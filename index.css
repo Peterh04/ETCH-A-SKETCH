@@ -49,16 +49,38 @@
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     height: 100vh;
 
-    background: white;
+    background: burlywood;
+
+
 
    
+}
 
-   
+button{
+  border-radius: 5px;
+  border: transparent;
+  background-color: antiquewhite;
+
+  cursor: pointer;
+
+  height: 60px;
+
+  opacity: 0.6;
+
+  transition: transform 0.5s ease;
+}
+
+img{
+  height: 50px;
+
+ 
+  
 }
 .container{
     border: 4px solid black;
@@ -78,3 +100,25 @@ body{
   background-color: black;
 }
 
+.buttons {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
+
+  width:  300px;
+  
+  
+  
+
+
+}
+
+
+.clicked{
+  transform: translateY(-10px);
+  opacity: 1;
+}
+
+h1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

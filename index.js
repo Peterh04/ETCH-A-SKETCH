@@ -2,11 +2,7 @@ const containerGrid = document.querySelector('.container');
 const eraser = document.querySelector('#eraser');
 const sketchBtn = document.querySelector('#sketchBtn');
 const colorBtn = document.querySelector('#multicolorBtn');
-
-const gridSizeBtn = document.querySelector('#gridSize')
-
-
-
+const gridSizeBtn = document.querySelector('#gridSize');
 
 
 
@@ -27,6 +23,7 @@ function getRandomColor() {
 
 
 function createGrid(sides) {
+    sketchBtn.classList.add('clicked');
     
     for (let y = 0; y < sides ; y++){
         const subgrid = document.createElement('div');
@@ -56,6 +53,7 @@ function createGrid(sides) {
                 
                 subgrid2.addEventListener('mouseover', ()=>{
                     subgrid2.classList.remove('coloredMultiple');
+                    subgrid2.style.background = '';
                     subgrid2.classList.add('colored');
                 })
             }
@@ -63,7 +61,11 @@ function createGrid(sides) {
             sketchBtn.addEventListener('click', ()=> {
                
                 sketch();
-                console.log('clicked');
+                
+                sketchBtn.classList.add('clicked');
+                eraser.classList.remove('clicked');
+                colorBtn.classList.remove('clicked');
+                gridSizeBtn.classList.remove('clicked');
             }, )
             
             
@@ -79,15 +81,26 @@ function createGrid(sides) {
             } 
             
                 eraser.addEventListener('click', ()=>{
-                    eraseSketch()
+                    eraseSketch();
+                    eraser.classList.add('clicked');
+                    colorBtn.classList.remove('clicked');
+                    gridSizeBtn.classList.remove('clicked');
+                    sketchBtn.classList.remove('clicked');
                     
                 })
 
 
                 colorBtn.addEventListener('click', ()=>{
+
+                    colorBtn.classList.add('clicked');
+                    eraser.classList.remove('clicked');
+                    gridSizeBtn.classList.remove('clicked');
+                    sketchBtn.classList.remove('clicked');
+
                     subgrid2.addEventListener('mouseover', ()=>{
                         subgrid2.classList.add('colored');
                         subgrid2.style.background = getRandomColor();
+                        
                         
                     })
                 })
@@ -101,6 +114,14 @@ function createGrid(sides) {
                
                 
                 gridSizeBtn.addEventListener('click', ()=>{
+
+                    gridSizeBtn.classList.add('clicked');
+                    eraser.classList.remove('clicked');
+                    colorBtn.classList.remove('clicked');
+                    sketchBtn.classList.add('clicked');
+
+                    
+
                     removeGrid();
                     
                 })
@@ -120,8 +141,8 @@ function createGrid(sides) {
    gridSizeBtn.addEventListener('click', ()=>{
     console.log('click');
     let sides = Number(prompt('What size? '));
-    if ( sides > 100){
-        alert('Grid size should not be more than 100');
+    if ( sides > 64){
+        alert('Grid size should not be more than 64');
         createGrid(16);
     }else{
         createGrid(sides);
