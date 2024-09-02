@@ -120,9 +120,15 @@ function createGrid(sides) {
    gridSizeBtn.addEventListener('click', ()=>{
     console.log('click');
     let sides = Number(prompt('What size? '));
-    createGrid(sides);
+    if ( sides > 100){
+        alert('Grid size should not be more than 100');
+        createGrid(16);
+    }else{
+        createGrid(sides);
+    }
+    
    }) 
     
     
-    
+
 
